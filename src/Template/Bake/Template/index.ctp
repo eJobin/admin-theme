@@ -94,7 +94,7 @@ $fields = collection($fields)
                                     ['action' => 'delete', <%= $pk %>],
                                     [
                                         'escape' => false,
-                                        'confirm' => __('Are you sure you want to delete # {0}?', <%= $pk %>)
+                                        'confirm' => __d('admin_theme', 'Are you sure you want to delete # {0}?', <%= $pk %>)
                                     ]
                                 )?>
                             </div>
@@ -108,7 +108,7 @@ $fields = collection($fields)
             <div class="box-footer clearfix">
                 <div class="btn-group pull-left">
                     <?= $this->Html->link(
-                        __('New <%= $singularHumanName %>'),
+                        __d('admin_theme', 'New <%= $singularHumanName %>'),
                         ['action' => 'add'],
                         ['class' => 'btn btn-primary', 'escape' => false]
                     );?>
@@ -121,15 +121,15 @@ $fields = collection($fields)
                     $done = [];
                     if(empty($associations)):
                 %>
-                    <li><a href="#"><?= __('No associated action') ?></a></li>
+                    <li><a href="#"><?= __d('admin_theme', 'No associated action') ?></a></li>
                 <%
                     endif;
                     foreach ($associations as $type => $data):
                         foreach ($data as $alias => $details):
                             if (!empty($details['navLink']) && $details['controller'] !== $this->name && !in_array($details['controller'], $done)):
                 %>
-                        <li><?= $this->Html->link(__('List <%= $this->_pluralHumanName($alias) %>'), ['controller' => '<%= $details['controller'] %>', 'action' => 'index']) ?></li>
-                        <li><?= $this->Html->link(__('New <%= $this->_singularHumanName($alias) %>'), ['controller' => '<%= $details['controller'] %>', 'action' => 'add']) ?></li>
+                        <li><?= $this->Html->link(__d('admin_theme', 'List <%= $this->_pluralHumanName($alias) %>'), ['controller' => '<%= $details['controller'] %>', 'action' => 'index']) ?></li>
+                        <li><?= $this->Html->link(__d('admin_theme', 'New <%= $this->_singularHumanName($alias) %>'), ['controller' => '<%= $details['controller'] %>', 'action' => 'add']) ?></li>
                 <%
                                 $done[] = $details['controller'];
                             endif;

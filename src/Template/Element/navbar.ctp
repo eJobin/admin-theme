@@ -10,7 +10,7 @@
 <nav class="navbar navbar-static-top" role="navigation">
     <!-- Sidebar toggle button-->
     <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-        <span class="sr-only">Toggle navigation</span>
+        <span class="sr-only"><?= __d('admin_theme', 'Toggle navigation') ?></span>
     </a>
     <!-- Navbar Right Menu -->
     <div class="navbar-custom-menu">
@@ -35,14 +35,14 @@
                     <li class="user-footer">
                         <div class="pull-left">
                             <?= $this->Html->link(
-                                'Back to website',
+                                __d('admin_theme', 'Back to website'),
                                 '/',
                                 ['class' => 'btn btn-default btn-flat']
                             ) ?>
                         </div>
                         <div class="pull-right">
                             <?= $this->Html->link(
-                                'Signout',
+                                __d('admin_theme', 'Sign out'),
                                 ['controller' => 'Users', 'action' => 'signout', 'prefix' => false],
                                 ['class' => 'btn btn-default btn-flat']
                             ) ?>

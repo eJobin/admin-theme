@@ -33,6 +33,7 @@
       <?= $this->element('rightbar') ?>
     </div>
 
+    <?= $this->Require->basepath(); ?>
     <?= $this->Require->module('admin/dist/js/app'); ?>
     <?= $this->Require->module('admin/plugins/fastclick/fastclick'); ?>
     <?= $this->Require->module('jquery'); ?>

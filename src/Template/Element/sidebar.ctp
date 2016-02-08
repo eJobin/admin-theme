@@ -9,7 +9,7 @@
                     <?= $this->request->session()->read('Auth.User.username') ?>
                 </p>
                 <?= $this->Html->link(
-                    '<i class="fa fa-angle-left"></i> Back to website',
+                    '<i class="fa fa-angle-left"></i>' . __d('admin_theme', 'Back to website'),
                     ['controller'=>'users', 'action' => 'view', 'prefix' => false],
                     ['escape' => false]
                 ) ?>
@@ -47,13 +47,13 @@
                 'group' => [
                     [
                         'content' => [
-                            'name' => 'index',
+                            'name' => __d('admin_theme', 'index'),
                             'url' => ['controller' => 'users', 'action' => 'index'],
                         ],
                     ],
                     [
                         'content' => [
-                            'name' => 'add',
+                            'name' => __d('admin_theme', 'add'),
                             'url' => ['controller' => 'users', 'action' => 'add'],
                         ],
                     ],

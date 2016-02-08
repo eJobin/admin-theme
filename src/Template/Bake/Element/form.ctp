@@ -25,7 +25,7 @@ $fields = collection($fields)
     <div class="col-md-12">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title"><?= __('<%= Inflector::humanize($action) %> <%= $singularHumanName %>') ?></h3>
+                <h3 class="box-title"><?= __d('admin_theme', '<%= Inflector::humanize($action) %> <%= $singularHumanName %>') ?></h3>
             </div>
             <?= $this->Form->create($<%= $singularVar %>, [
                 'templates' => [
@@ -77,14 +77,14 @@ $fields = collection($fields)
                 </div>
                 <div class="box-footer">
                     <?= $this->Form->submit(
-                        __('Submit'),
+                        __d('admin_theme', 'Submit'),
                         [
                             'class' => 'btn btn-primary',
                         ]
                     ) ?> 
                     <div class="btn-group">
                         <?= $this->Html->link(
-                            __('Cancel'),
+                            __d('admin_theme', 'Cancel'),
                             ['action' => 'index'],
                             ['class' => 'btn btn-default']
                         );?>
@@ -93,14 +93,14 @@ $fields = collection($fields)
                             <span class="sr-only">Toggle Dropdown</span>
                         </button>
                         <ul class="dropdown-menu" role="menu">
-                            <li><?= $this->Html->link(__('List <%= $pluralHumanName %>'), ['action' => 'index']) ?></li>
+                            <li><?= $this->Html->link(__d('admin_theme', 'List <%= $pluralHumanName %>'), ['action' => 'index']) ?></li>
                             <hr/>
                             <% if (strpos($action, 'add') === false): %>
                                 <?= $this->Form->postLink(
-                                    __('Delete'),
+                                    __d('admin_theme', 'Delete'),
                                     ['action' => 'delete', $<%= $singularVar %>-><%= $primaryKey[0] %>],
                                     [
-                                        'confirm' => __('Are you sure you want to delete # {0}?', $<%= $singularVar %>-><%= $primaryKey[0] %>),
+                                        'confirm' => __d('admin_theme', 'Are you sure you want to delete # {0}?', $<%= $singularVar %>-><%= $primaryKey[0] %>),
                                         'class' => 'btn btn-default'
                                     ]
                                 )?>
@@ -114,8 +114,8 @@ $fields = collection($fields)
                                 foreach ($data as $alias => $details) :
                                     if ($details['controller'] !== $this->name && !in_array($details['controller'], $done)) :
                     %>
-                            <li><?= $this->Html->link(__('List <%= $this->_pluralHumanName($alias) %>'), ['controller' => '<%= $details['controller'] %>', 'action' => 'index']) %></li>
-                            <li><?= $this->Html->link(__('New <%= $this->_singularHumanName($alias) %>'), ['controller' => '<%= $details['controller'] %>', 'action' => 'add']) %></li>
+                            <li><?= $this->Html->link(__d('admin_theme', 'List <%= $this->_pluralHumanName($alias) %>'), ['controller' => '<%= $details['controller'] %>', 'action' => 'index']) %></li>
+                            <li><?= $this->Html->link(__d('admin_theme', 'New <%= $this->_singularHumanName($alias) %>'), ['controller' => '<%= $details['controller'] %>', 'action' => 'add']) %></li>
                     <%
                                         $done[] = $details['controller'];
                                     endif;
