@@ -11,7 +11,7 @@ if (empty($associations['oneToMany'])) {
 $relations = array_merge($associations['oneToMany'], $associations['manyToMany']);
 
 $i = 0;
-foreach ($relations as $alias => $details):
+foreach ($relations as $alias => $details) :
     $otherSingularVar = $details['propertyName'];
     ?>
     <div class="box">
@@ -19,7 +19,7 @@ foreach ($relations as $alias => $details):
             <h3 class="box-title"><?= __d('crud', 'Related {0}', [Inflector::humanize($details['controller'])]); ?></h3>
         </div>
         <?php
-        if (${$viewVar}->{$details['entities']}):
+        if (${$viewVar}->{$details['entities']}) :
             ?>
             <div class="box-body">
                 <div class="table-responsive">
@@ -31,7 +31,7 @@ foreach ($relations as $alias => $details):
                                 $index = array_search($details['with'], $otherFields);
                                 unset($otherFields[$index]);
                             }
-                    
+
                             foreach ($otherFields as $field) {
                                 echo "<th>" . Inflector::humanize($field) . "</th>";
                             }
@@ -52,7 +52,7 @@ foreach ($relations as $alias => $details):
                                 ?>
                                 <td class="actions pull-right">
                                     <?= $this->Html->link(
-                                        __d('crud', '<i class="fa fa-eye"></i>'), 
+                                        __d('crud', '<i class="fa fa-eye"></i>'),
                                         [
                                             'plugin' => $details['plugin'],
                                             'controller' => $details['controller'],
@@ -76,7 +76,7 @@ foreach ($relations as $alias => $details):
                                             'class' => 'btn btn-default',
                                             'escape' => false
                                         ]
-                                    )?>
+                                    ) ?>
                                     <?= $this->Html->link(
                                         __d('crud', '<i class="fa fa-trash"></i>'),
                                         [
@@ -103,22 +103,22 @@ foreach ($relations as $alias => $details):
         ?>
 
         <div class="box-footer clearfix">
-        <?= $this->Html->link(
-            __d('crud', 'Add {0}', [Inflector::singularize(Inflector::humanize(Inflector::underscore($alias)))]),
-            [
-                'plugin' => $details['plugin'],
-                'controller' => $details['controller'],
-                'action' => 'add',
-                '?' => [
-                    $details['foreignKey'] => $this->get('primaryKeyValue'),
-                    '_redirect_url' => $this->request->here
+            <?= $this->Html->link(
+                __d('crud', 'Add {0}', [Inflector::singularize(Inflector::humanize(Inflector::underscore($alias)))]),
+                [
+                    'plugin' => $details['plugin'],
+                    'controller' => $details['controller'],
+                    'action' => 'add',
+                    '?' => [
+                        $details['foreignKey'] => $this->get('primaryKeyValue'),
+                        '_redirect_url' => $this->request->here
+                    ]
+                ],
+                [
+                    'escape' => false,
+                    'class' => 'btn btn-primary'
                 ]
-            ],
-            [
-                'escape' => false,
-                'class' => 'btn btn-primary'
-            ]
-        ) ?>
+            ) ?>
         </div>
     </div>
 <?php endforeach; ?>

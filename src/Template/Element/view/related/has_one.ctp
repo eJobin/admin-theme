@@ -1,5 +1,6 @@
 <?php
 use Cake\Utility\Inflector;
+
 if (empty($associations['oneToOne'])) {
     return;
 }
@@ -10,7 +11,9 @@ if (empty($associations['oneToOne'])) {
     <?php if (!empty(${$viewVar}->{$alias})) : ?>
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title"><?= __d('crud', 'Related {0}', [Inflector::humanize($details['controller'])]); ?></h3>
+                <h3 class="box-title">
+                    <?= __d('crud', 'Related {0}', [Inflector::humanize($details['controller'])]); ?>
+                </h3>
             </div>
 
             <div class="box-body">
@@ -24,13 +27,18 @@ if (empty($associations['oneToOne'])) {
                         <dd><?= $this->CrudView->process($field, ${$viewVar}->{$alias}, $details); ?>&nbsp;</dd>
                         <?php
                     }
-                ?>
+                    ?>
                 </dl>
             </div>
             <div class="box-footer clearfix">
                 <?= $this->Html->link(
                     __d('crud', 'View {0}', [Inflector::humanize(Inflector::underscore($alias))]),
-                    ['plugin' => $details['plugin'], 'controller' => $details['controller'], 'action' => 'view', ${$viewVar}[$alias][$details['primaryKey']]],
+                    [
+                        'plugin' => $details['plugin'],
+                        'controller' => $details['controller'],
+                        'action' => 'view',
+                        ${$viewVar}[$alias][$details['primaryKey']]
+                    ],
                     ['class' => 'btn btn-primary']
                 ) ?>
             </div>

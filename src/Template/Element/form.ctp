@@ -4,7 +4,15 @@
     <div class="box box-primary">
         <?= $this->element('action-header', ['tools' => false]) ?>
         <div class="box-body">
-            <?= $this->Form->create(${$viewVar}, ['role' => 'form', 'url' => $formUrl, 'type' => 'file', 'data-dirty-check' => $enableDirtyCheck]); ?>
+            <?= $this->Form->create(
+                ${$viewVar},
+                [
+                    'role' => 'form',
+                    'url' => $formUrl,
+                    'type' => 'file',
+                    'data-dirty-check' => $enableDirtyCheck
+                ]
+            ); ?>
             <?= $this->CrudView->redirectUrl(); ?>
             <?= $this->Form->inputs($fields, ['legend' => false]); ?>
         </div>
@@ -13,17 +21,41 @@
                 <div class="pull-left">
                     <?= $this->Form->button(__d('crud', 'Save'), ['class' => 'btn btn-primary', 'name' => '_save']); ?>
                     <?php
-                        if (empty($disableExtraButtons)) {
-                            if (!in_array('save_and_continue', $extraButtonsBlacklist)) {
-                                echo $this->Form->button(__d('crud', 'Save & continue editing'), ['class' => 'btn btn-success btn-save-continue', 'name' => '_edit']) . ' ';
-                            }
-                            if (!in_array('save_and_create', $extraButtonsBlacklist)) {
-                                echo $this->Form->button(__d('crud', 'Save & create new'), ['class' => 'btn btn-success', 'name' => '_add']) . ' ';
-                            }
-                            if (!in_array('back', $extraButtonsBlacklist)) {
-                                echo $this->Html->link(__d('crud', 'Back'), ['action' => 'index'], ['class' => 'btn btn-default', 'role' => 'button']) . ' ';
-                            }
+                    if (empty($disableExtraButtons)) {
+                        if (!in_array('save_and_continue', $extraButtonsBlacklist)) {
+                            echo $this->Form->button(
+                                __d('crud', 'Save & continue editing'),
+                                [
+                                    'class' => 'btn btn-success btn-save-continue',
+                                    'name' => '_edit'
+                                ]
+                            );
+                            echo ' ';
                         }
+                        if (!in_array('save_and_create', $extraButtonsBlacklist)) {
+                            echo $this->Form->button(
+                                __d('crud', 'Save & create new'),
+                                [
+                                    'class' => 'btn btn-success',
+                                    'name' => '_add'
+                                ]
+                            );
+                            echo ' ';
+                        }
+                        if (!in_array('back', $extraButtonsBlacklist)) {
+                            echo $this->Html->link(
+                                __d('crud', 'Back'),
+                                [
+                                    'action' => 'index'
+                                ],
+                                [
+                                    'class' => 'btn btn-default',
+                                    'role' => 'button'
+                                ]
+                            );
+                            echo ' ';
+                        }
+                    }
                     ?>
                 </div>
             </div>
